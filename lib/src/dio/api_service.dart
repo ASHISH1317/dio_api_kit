@@ -39,14 +39,6 @@ class APIService {
   /// [query] represents optional query parameters.
   ///
   /// Returns a [Response] containing the parsed response body.
-  ///
-  /// Example:
-  /// ```dart
-  /// await apiService.get(
-  ///   path: '/users',
-  ///   query: {'page': 1},
-  /// );
-  /// ```
   Future<Response<T>> get<T>({
     required String path,
     Map<String, dynamic>? query,
@@ -89,8 +81,8 @@ class APIService {
       queryParameters: query,
       options: options,
       onReceiveProgress: onReceiveProgress,
-      cancelToken: cancelToken,
       onSendProgress: onSendProgress,
+      cancelToken: cancelToken,
     );
   }
 
@@ -116,6 +108,42 @@ class APIService {
       cancelToken: cancelToken,
       options: options,
       queryParameters: query,
+    );
+  }
+
+  /// Sends a PATCH request to the given [path].
+  ///
+  /// [data] contains partial fields to be updated.
+  ///
+  /// Commonly used for:
+  /// - Partial updates
+  /// - Toggling flags
+  /// - Updating a subset of a resource
+  ///
+  /// Example:
+  /// ```dart
+  /// await apiService.patch(
+  ///   path: '/users/1',
+  ///   data: {'isActive': true},
+  /// );
+  /// ```
+  Future<Response<T>> patch<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? query,
+    Options? options,
+    void Function(int, int)? onReceiveProgress,
+    void Function(int, int)? onSendProgress,
+    CancelToken? cancelToken,
+  }) {
+    return dio.patch<T>(
+      path,
+      data: data,
+      queryParameters: query,
+      options: options,
+      onReceiveProgress: onReceiveProgress,
+      onSendProgress: onSendProgress,
+      cancelToken: cancelToken,
     );
   }
 
