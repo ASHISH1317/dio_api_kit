@@ -98,6 +98,7 @@ Provides:
 - post
 - put
 - delete
+- patch
 
 No business logic included.
 
