@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Example added
+
 ## 1.0.0
 
 🎉 Initial release of `dio_api_kit`.

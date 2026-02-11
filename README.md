@@ -31,7 +31,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dio_api_kit: ^1.0.0
+  dio_api_kit: ^1.*.*
 ```
 
 ---
