@@ -34,6 +34,17 @@ class APIService {
   /// and injected for better testability and flexibility.
   APIService(this.dio);
 
+  /// Prepares the URL for the given [path].
+  /// Force base url handled
+  String _prepareUrl(String path, String? forceBaseUrl) {
+    if (forceBaseUrl != null && forceBaseUrl.trim().isNotEmpty) {
+      final base = forceBaseUrl.trim().replaceAll(RegExp(r'/+$'), '');
+      final p = path.trim().replaceAll(RegExp(r'^/+'), '');
+      return '$base/$p';
+    }
+    return path;
+  }
+
   /// Sends a GET request to the given [path].
   ///
   /// [query] represents optional query parameters.
@@ -46,9 +57,11 @@ class APIService {
     CancelToken? cancelToken,
     void Function(int, int)? onReceiveProgress,
     Options? options,
+    String? forceBaseUrl,
   }) {
+    String url = _prepareUrl(path, forceBaseUrl);
     return dio.get<T>(
-      path,
+      url,
       queryParameters: query,
       data: data,
       cancelToken: cancelToken,
@@ -74,9 +87,11 @@ class APIService {
     void Function(int, int)? onReceiveProgress,
     void Function(int, int)? onSendProgress,
     CancelToken? cancelToken,
+    String? forceBaseUrl,
   }) {
+    String url = _prepareUrl(path, forceBaseUrl);
     return dio.post<T>(
-      path,
+      url,
       data: data,
       queryParameters: query,
       options: options,
@@ -99,9 +114,11 @@ class APIService {
     CancelToken? cancelToken,
     Options? options,
     Map<String, dynamic>? query,
+    String? forceBaseUrl,
   }) {
+    String url = _prepareUrl(path, forceBaseUrl);
     return dio.put<T>(
-      path,
+      url,
       data: data,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -135,9 +152,11 @@ class APIService {
     void Function(int, int)? onReceiveProgress,
     void Function(int, int)? onSendProgress,
     CancelToken? cancelToken,
+    String? forceBaseUrl,
   }) {
+    String url = _prepareUrl(path, forceBaseUrl);
     return dio.patch<T>(
-      path,
+      url,
       data: data,
       queryParameters: query,
       options: options,
@@ -159,9 +178,11 @@ class APIService {
     Map<String, dynamic>? query,
     CancelToken? cancelToken,
     Options? options,
+    String? forceBaseUrl,
   }) {
+    String url = _prepareUrl(path, forceBaseUrl);
     return dio.delete<T>(
-      path,
+      url,
       data: data,
       queryParameters: query,
       options: options,

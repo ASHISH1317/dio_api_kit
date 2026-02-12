@@ -60,10 +60,10 @@ packages:
   dio_api_kit:
     dependency: "direct main"
     description:
-      path: "../.."
+      path: ".."
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.0.2"
   dio_web_adapter:
     dependency: transitive
     description:
