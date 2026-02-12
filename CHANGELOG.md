@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Added support of ```force base url```
+
 ## 1.0.2
 
 - Added ```patch``` request support.

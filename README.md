@@ -54,6 +54,8 @@ DioApiKit.initialize(
 );
 ```
 
+---
+
 2️⃣ Make an API Call
 
 Example repository usage:
@@ -89,6 +91,8 @@ final user = await APIWrapper.handleApiCall<User>(
 - Sets base options
 - Initializes APIWrapper
 
+---
+
 2️⃣ APIService
 
 Thin wrapper around Dio.
@@ -102,6 +106,8 @@ Provides:
 
 No business logic included.
 
+---
+
 3️⃣ ApiResponse<T>
 
 Generic, backend-agnostic response model.
@@ -112,6 +118,8 @@ You provide:
 - dataParser
 
 This avoids coupling to any backend format.
+
+---
 
 4️⃣ APIWrapper
 

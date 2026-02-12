@@ -1,6 +1,6 @@
 name: dio_api_kit
 description: A lightweight, backend-agnostic API layer built on top of Dio with configurable success handling, centralized error management, and clean architecture support.
-version: 1.0.2
+version: 1.0.3
 
 homepage: https://github.com/ASHISH1317/dio_api_kit
 repository: https://github.com/ASHISH1317/dio_api_kit
